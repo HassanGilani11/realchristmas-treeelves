@@ -1,0 +1,159 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
+  <div>
+    <div class="cart__footer">
+      <div class="cart__blocks">
+        {%- if settings.show_cart_note -%}
+          <cart-note class="cart__note field" style="display:none;">
+            <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+            <textarea
+              class="text-area field__input"
+              name="note"
+              form="cart"
+              id="Cart-note"
+              placeholder="{{ 'sections.cart.note' | t }}"
+            >{{ cart.note }}</textarea>
+          </cart-note>
+        {%- endif -%}
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'subtotal' -%}
+              <div class="js-contents" {{ block.shopify_attributes }}>
+                <div class="totals">
+                  <p class="totals__subtotal">Total :</p>
+                  <p class="totals__subtotal-value"><span  class='ymq_cart_total_price'>{{ cart.total_price | money_with_currency }}</span></p>
+                </div>
+                <div class="totals" style="margin-top:20px; padding-top:20px; margin-bottom:20px; padding-bottom:20px; border-top:.1rem solid rgba(var(--color-foreground),.08); border-bottom:.1rem solid rgba(var(--color-foreground),.08);">
+                  <p class="totals__subtotal" style="line-height:1.5 !important;">Delivery : <span style="color:#9a1415;">Free Delivery</span>
+                  </p>
+                  
+                </div>
+               <div style="margin-bottom:-10px;"><div class="totals" style="background:#f0ecdf40; border-radius:1rem; padding:1rem; text-align:left !important;  width:100%; display:flex; margin-bottom:15px; justify-content:flex-start !important;"><img style="margin-bottom:5px;" src="https://cdn.shopify.com/s/files/1/0657/2415/4107/files/icon-2.svg?v=1676480735"><div style="margin-left:20px;"><span style="font-family:Playfair Display,serif;"><b><i style="color:#8d241e!important;">We Guarantee you'll love your tree</i></b></span>
+<p style="margin-top:5px;">Or we'll replace it!</p></div>
+</div>
+</div>
+                <div>
+                  {%- if cart.cart_level_discount_applications.size > 0 -%}
+                    <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                      {%- for discount in cart.cart_level_discount_applications -%}
+                        <li class="discounts__discount discounts__discount--position">
+                          {%- render 'icon-discount' -%}
+                          {{ discount.title }}
+                          (-{{ discount.total_allocated_amount | money }})
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+
+                <small class="tax-note caption-large rte"> </small>
+              </div>
+            {%- else -%}
+           
+              <div  class="cart__ctas" {{ block.shopify_attributes }}>
+                <noscript>
+                  <button  type="submit" class="cart__update-button button button--secondary" form="cart">
+                    {{ 'sections.cart.update' | t }}
+                  </button>
+                </noscript>
+
+            
+                
+                <button
+                  type="submit"
+                  id="checkout"
+                  style="padding:2.5rem 0rem !important; width:95% !important; margin-bottom:4rem; background:#8d241e !important; border:1px solid #8d241e !important;"
+                  class="cs-checkout cart__checkout-button button cart__submit btn btn--small-wide"
+                  name="checkout"
+                  form="cart"
+                >
+                  Confirm Date & {{ 'sections.cart.checkout' | t }} →
+                </button>
+              </div>
+          {%- endcase -%}
+        {% endfor %}
+
+        <div id="cart-errors"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+  $(document).ready(function(){
+  setTimeout(function(){
+    //$('.ddm-search-icon.oddm-zipcode-search-icon').trigger('click');
+    $('#checkout').removeAttr('disabled');
+  },1000);
+  $('.cs-checkout').click(function(){
+
+    var a = $('#dds_calendar').val();
+
+     var b = $('#ddm_zipcode').val();
+     if(b == '') {
+
+       $('.ddm-search-icon.oddm-zipcode-search-icon').trigger('click');
+     } else {
+       //$('.ddm-search-icon.oddm-zipcode-search-icon').trigger('click');
+     }
+    if(a == ''){
+     $('.ddm_select_box.date-picker-wrap').append('<div class="custom-error-message" style="color:red;">Select your delivery day first</div>');
+     $('.custom-error-message').not(':last').remove();
+    } else {
+    $('.custom-error-message').remove();
+
+    }
+
+    });
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return (msie > 0 || trident > 0);
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function(event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-footer.name",
+  "class": "cart__footer-wrapper",
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}
+{% comment %}<!-- ymq option done -->{% endcomment %}

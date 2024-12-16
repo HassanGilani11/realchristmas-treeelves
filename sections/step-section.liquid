@@ -1,0 +1,83 @@
+<div class="step-inner-wrapper {{ section.settings.section-class }}">
+  <div class='page-width'>
+    <div class="container-block">
+      <div class="row-block-wrapper">
+        <div class="column-6">
+          <h2 class="rich-text__heading rte h1">{{section.settings.step_heading}}</h2>
+        </div>
+        <div class="column-6">
+          <div class="step-block-area">
+		  {%- for block in section.blocks -%}
+            {% assign logo = block.settings.cs_step_logo | img_url: "master" %}
+            {% assign cs_title = block.settings.cs_title  %}
+            {% assign cs_sub_title = block.settings.cs_sub_title  %}
+            <div class="stp-item">
+              <h4 class="sr-no">0{{forloop.index}}</h4>
+              <div class="stp-media">
+                <div class="stp-img-outer">
+                  <img src="{{logo}}" alt="icon-img" class="stp-img" />
+                </div>
+                <h6 class="stp-title">{{cs_title}}</h6>
+              </div>
+              <p class="stp-desc">{{cs_sub_title}}</p>
+            </div>
+		 {% endfor %}
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+      "name": "step-section",
+	  "max_blocks": 4,
+      "settings": [
+	    {
+          "type": "text",
+          "id": "section-class",
+          "label": "Section class"
+        },
+        {
+          "type": "textarea",
+          "id": "step_heading",
+          "label": "Heading"
+        }
+        
+      ],
+	  "blocks": [
+    {
+      "type": "steps",
+      "name": "steps",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "cs_step_logo",
+          "label": "Logo"
+        },
+		{
+          "type": "text",
+          "id": "cs_title",
+          "label": "Title"
+        },
+		{
+          "type": "textarea",
+          "id": "cs_sub_title",
+          "label": "Description"
+        }
+		
+      ]
+    }
+  ],
+    "presets": [
+      {
+        "category": "Advanced",
+        "name": "step-section",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,139 @@
+<div class="ct-inner-section {{ section.settings.section-class }}">
+  <div class="page-width">
+    <div class="container-block">
+	  {%- for block in section.blocks -%}
+      {% assign Image = block.settings.Image | img_url: "master" %}
+      {% assign sub_text = block.settings.sub_text  %}
+      {% assign Title = block.settings.Title  %}
+      {% assign description = block.settings.description  %}
+	  {% if forloop.index == 1 %}
+      <div class="row-block-wrapper">
+        <div class="col-left">
+          <img src="{{Image}}" class="media-img" alt="image" />
+        </div>
+        <div class="col-center">
+          <span class="spline-divider"></span>
+        </div>
+        <div class="col-right">
+          <div class="content-block-item">
+		  {% if sub_text !='' %}
+            <div class="media-block">
+              <img class="icon-img" src="https://cdn.shopify.com/s/files/1/0657/2415/4107/files/icon-1.svg?v=1660731818" alt="icon-img" />
+              <p class="desc-title">{{sub_text}}</p>
+            </div>
+		{% endif %}
+            <h4 class="shopify_desc_title">{{Title}}</h4>
+            <p class="shopify_desc_txt"> {{description}}</p>
+          </div>
+        </div>
+      </div>
+	  {% endif %}
+	  {% endfor %}
+	  {%- for block in section.blocks -%}
+      {% assign Image = block.settings.Image | img_url: "master" %}
+      {% assign sub_text = block.settings.sub_text  %}
+      {% assign Title = block.settings.Title  %}
+      {% assign description = block.settings.description  %}
+	  {% if forloop.index == 2 %}
+      <div class="row-block-wrapper">
+        <div class="col-left">
+          <img src="{{Image}}" class="media-img" alt="image" />
+        </div>
+        <div class="col-center">
+          <span class="spline-divider"></span>
+        </div>
+        <div class="col-right">
+          <div class="content-block-item">
+		  {% if sub_text !='' %}
+            <div class="media-block">
+              <img class="icon-img" src="https://cdn.shopify.com/s/files/1/0657/2415/4107/files/icon-2.svg?v=1660731818" alt="icon-img" />
+              <p class="desc-title">{{sub_text}}</p>
+            </div>
+		  {% endif %}
+            <h4 class="shopify_desc_title">{{Title}}</h4>
+            <p class="shopify_desc_txt"> {{description}}</p>
+          </div>
+        </div>
+      </div>
+	  {% endif %}
+	  {% endfor %}
+	  {%- for block in section.blocks -%}
+      {% assign Image = block.settings.Image | img_url: "master" %}
+      {% assign sub_text = block.settings.sub_text  %}
+      {% assign Title = block.settings.Title  %}
+      {% assign description = block.settings.description  %}
+	  {% if forloop.index == 3 %}
+      <div class="row-block-wrapper">
+        <div class="col-left">
+          <img src="{{Image}}" class="media-img" alt="image" />
+        </div>
+        <div class="col-center">
+          <span class="spline-divider"></span>
+        </div>
+        <div class="col-right">
+          <div class="content-block-item">
+		  {% if sub_text !='' %}
+            <div class="media-block">
+              <img class="icon-img" src="https://cdn.shopify.com/s/files/1/0657/2415/4107/files/icon-3.svg?v=1660731818" alt="icon-img" />
+              <p class="desc-title">{{sub_text}}</p>
+            </div>
+		  {% endif %}
+            <h4 class="shopify_desc_title">{{Title}}</h4>
+            <p class="shopify_desc_txt"> {{description}}</p>
+          </div>
+        </div>
+      </div>
+	  {% endif %}
+	  {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+      "name": "Image text multiple row",
+	  "max_blocks": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "section-class",
+          "label": "Section class"
+        }
+      ],
+	  "blocks": [
+     {
+      "type": "image",
+      "name": "image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "Image",
+          "label": "Image"
+        },
+		{
+          "type": "text",
+          "id": "sub_text",
+          "label": "Sub Title"
+        },
+		{
+          "type": "text",
+          "id": "Title",
+          "label": "Title"
+        },
+		{
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+		
+      ]
+    }
+  ],
+    "presets": [
+      {
+        "category": "Advanced",
+        "name": "Image-text multiple row",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}

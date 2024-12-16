@@ -1,0 +1,123 @@
+{% assign title = section.settings.title %}
+{% assign title1 = section.settings.title1 %}
+{% assign title2 = section.settings.title2 %}
+
+{% assign Description = section.settings.Description %}
+{% assign Description1 = section.settings.Description1 %}
+{% assign Description2 = section.settings.Description2 %}
+
+{% assign Address_Heading = section.settings.Address_Heading %}
+{% assign Address_Heading1 = section.settings.Address_Heading1 %}
+{% assign Address_Heading2 = section.settings.Address_Heading2 %}
+
+{% assign Address_Des = section.settings.Address_Des %}
+{% assign Address_Des1 = section.settings.Address_Des1 %}
+{% assign Address_Des2 = section.settings.Address_Des2 %}
+
+
+{% assign Hours_Heading = section.settings.Hours_Heading %}
+{% assign Hours_Heading1 = section.settings.Hours_Heading1 %}
+{% assign Hours_Heading2 = section.settings.Hours_Heading2 %}
+ 
+{% assign Hours_Des_one = section.settings.Hours_Des_one %}
+{% assign Hours_Des_two = section.settings.Hours_Des_two %}
+{% assign Hours_Des_three = section.settings.Hours_Des_three %}
+<div class="ct-inner-section mp-inner-sec {{ section.settings.section-class }}">
+   <div class="page-width">
+      <div class="container-block">
+         <div class="row-block-wrapper">
+            <div class="col-left">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3537.3342676193784!2d153.0760637!3d-27.552134600000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915bdb468db985%3A0xc77f9113ca12c487!2sReal%20Christmas%20Tree%20Elves!5e0!3m2!1sen!2sau!4v1696894415553!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </div>
+            <div class="col-center">
+               <span class="spline-divider"></span>
+            </div>
+            <div class="col-right">
+               <div class="content-block-item">
+                  <h4 class="shopify_desc_title">{{title}}</h4>
+                  <p class="shopify_desc_txt"> {{Description}}</p>
+               </div>
+                <div class="step-block-area">
+                  <div class="stp-item">
+                     <div class="stp-media">
+                        <div class="stp-img-outer">
+                           <img src="https://cdn.shopify.com/s/files/1/0657/2415/4107/files/map.svg?v=1662443557" alt="icon-img" class="stp-img">
+                        </div>
+                        <h6 class="stp-title">{{Address_Heading}}</h6>
+                     </div>
+                     <p class="stp-desc">{{Address_Des}}</p>
+                  </div>
+                  <div class="stp-item">
+                     <div class="stp-media">
+                        <div class="stp-img-outer">
+                           <img src="https://cdn.shopify.com/s/files/1/0657/2415/4107/files/time.svg?v=1662444147" alt="icon-img" class="stp-img">
+                        </div>
+                        <h6 class="stp-title">{{Hours_Heading}}</h6>
+                     </div>
+                     <p class="stp-desc">{{Hours_Des_one}}
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+      
+      </div>
+   </div>
+</div>
+{% schema %}
+  {
+    "name": "Map With Text",
+    "settings": [
+	
+			{
+			"type": "text",
+			"id": "title",
+			"label": "Heading",
+			"default": "Williamstown Retail Site"
+			},
+			{
+			"type": "textarea",
+			"id": "Description",
+			"label": "Description",
+			"default": "We have a huge range on offer for you to browse and select that perfect tree this year. No need to purchase online, just rock up with the family and our Elves will look after you!"
+			},
+			{
+			"type": "text",
+			"id": "Address_Heading",
+			"label": "Address Heading",
+			"default": "Address"
+			},
+			{
+			"type": "textarea",
+			"id": "Address_Des",
+			"label": "Address Description",
+			"default": "Range Child Care Centre, 87 Kororoit Creek Road, Williamstown, 3016"
+			},
+			{
+			"type": "text",
+			"id": "Hours_Heading",
+			"label": "Hours Heading",
+			"default": "Hours"
+			},
+			{
+			"type": "richtext",
+			"id": "Hours_Des_one",
+			"label": "Hours Description"
+			}
+	
+	],
+    "presets": [
+      {
+        "category": "Advanced",
+        "name": "Map With Text",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

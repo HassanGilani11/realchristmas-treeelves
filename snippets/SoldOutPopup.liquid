@@ -1,0 +1,419 @@
+<style>
+.modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 20px;
+	width: 40%;
+	padding: 45px 25px;
+	position: absolute;
+	z-index: 2;
+	top: 15%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.form-status.form-status-list.form__message {
+	color: #fff;
+	background: #9a1415;
+	padding: 15px;
+	margin: 0 0 15px !important;
+	font-family: Inter, sans-serif !important;
+	font-size: 14px;
+	line-height: 1.5;
+
+}
+
+.modal .flex {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	position: absolute;
+	top: -20px;
+	right: -20px;
+}
+
+.custom-btn-close {
+	padding: 5px;
+	background: #fff;
+	border-radius: 50%;
+	width: 45px;
+	display: flex;
+	align-items: center;
+	height: 45px;
+	color: #43786e;
+	font-size: 22px;
+	justify-content: center;
+	line-height: 1.3;
+	border: none;
+	margin-left: auto;
+	margin-right: 20px;
+	margin-top: 20px;
+	opacity: 1;
+}
+
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 11;
+	background: url("https://cdn.shopify.com/s/files/1/0657/2415/4107/files/christmas--tree.jpg?v=1665743725") rgb(0 0 0 / 60%);
+	background-blend-mode: multiply;
+	overflow: hidden;
+	top: -100%;
+	transition: 0.4s ease all;
+	display: block !important;
+}
+
+.open-new-popup {
+	top: 0;
+	transition: 0.4s ease all;
+}
+
+.hidden {
+	display: none;
+}
+
+.modal-title {
+	font-weight: 400;
+	font-size: 58px;
+	line-height: 1.33;
+	letter-spacing: .01em;
+	text-transform: inherit;
+	color: #fff;
+	text-align: center;
+}
+
+.modal .modal-desc {
+	font-size: 14px;
+	color: #fff;
+	line-height: 1.58;
+	text-align: center;
+	transition: all .3s;
+	text-decoration: none;
+	font-family: Inter, sans-serif !important;
+	margin: 15px 0 5px;
+}
+
+.modal input {
+	height: 48px;
+	border: 1px solid rgba(0, 0, 0, .25);
+	border-radius: 50px;
+	padding: 0 15px;
+	color: #000;
+	line-height: 1.58;
+	font-weight: 400;
+	opacity: 1;
+	text-transform: capitalize;
+	display: block;
+	width: 100%;
+	margin-bottom: 30px;
+	font-size: 16px;
+	width: calc(49% - 6px);
+	display: inline-block;
+	float: left;
+	margin-top: 10px;
+}
+
+.modal input:hover {
+	cursor: initial;
+}
+
+.modal input#ContactForm-email {
+	float: right;
+}
+
+.sb-btn.button--full-width {
+	padding: 14px 25px;
+	line-height: 1.2;
+	height: 48px;
+	font-weight: 400;
+	text-decoration: none;
+	transform: none;
+	font-size: 16px;
+	background: #43786e;
+	opacity: 1;
+	border: 1px solid #43786e;
+	outline: none;
+	box-shadow: none;
+	color: #fff;
+	text-transform: capitalize;
+	transition: all .3s;
+	cursor: pointer;
+	border-radius: 50px;
+	justify-content: center;
+}
+
+.sb-btn.button--full-width:hover {
+	background-color: #fff;
+	color: #43786e;
+}
+
+
+button.n_thk {
+	margin: 20px auto 0;
+	display: block;
+	background-color: transparent;
+	border: none;
+	color: #fff;
+	line-height: 1;
+	font-size: 18px;
+    cursor:pointer;
+}
+
+button.n_thk:hover {
+	text-decoration: underline;
+}
+
+@media screen and (max-width: 1440px) {
+	.modal input {
+		height: 45px;
+		font-size: 16px;
+		padding: 0 15px;
+	}
+
+	.sb-btn.button--full-width {
+		padding: 12px 25px;
+		height: 45px;
+		font-size: 16px;
+	}
+
+	.custom-btn-close {
+		height: 40px;
+		width: 40px;
+		font-size: 18px;
+	}
+
+	.modal .modal-desc {
+		font-size: 18px;
+	}
+
+	.modal-title {
+		font-size: 40px;
+	}
+
+	button.n_thk {
+		margin: 15px auto 0;
+		font-size: 16px;
+	}
+
+}
+
+
+@media screen and (max-width: 1199px) {
+	.modal-title {
+		font-size: 32px;
+	}
+
+	.modal .modal-desc,
+	.modal input,
+	.sb-btn.button--full-width {
+		font-size: 15px;
+	}
+
+	.modal input {
+		margin-bottom: 20px;
+		margin-right: 0;
+		float: none;
+		margin-top: 0;
+		margin-left: 0;
+		width: 48%;
+	}
+
+	.modal {
+		gap: 15px;
+		width: 60%;
+		padding: 25px;
+		z-index: 2;
+		top: 15%;
+	}
+
+
+}
+
+@media screen and (max-width: 992px) {
+	.form-status.form-status-list.form__message {
+		padding: 10px;
+		font-size: 12px;
+	}
+
+	.modal input {
+		width: 100%;
+	}
+}
+
+
+@media screen and (max-device-width: 992px) and (orientation: landscape) {
+	.modal {
+		top: 5%;
+	}
+
+	.modal input {
+		width: 48%;
+		display: inline-block;
+		margin-right: 7px;
+		float: left;
+		margin-top: 10px;
+	}
+
+	.modal input#ContactForm-email {
+		margin-left: 7px;
+		margin-right: 0;
+		float: right;
+	}
+}
+
+
+@media screen and (max-width: 640px) {
+	.modal-title {
+		font-size: 24px;
+	}
+
+	.modal .modal-desc,
+	.modal input,
+	.sb-btn.button--full-width {
+		font-size: 14px;
+	}
+
+	.modal {
+		width: 95%;
+		padding: 40px 20px;
+	}
+
+	.custom-btn-close {
+		font-size: 16px;
+	}
+
+	.modal .flex {
+		top: -20px;
+		right: -15px;
+	}
+}
+
+.product-form__buttons {
+	display: none !important;
+}
+</style>
+
+<div class="modal-overlay cs-modal-open" style="display:none;">
+  <button class="btn-close custom-btn-close" style="cursor: pointer;">⨉</button>
+   <div class="modal">
+      <div class="flex">
+         
+      </div>
+      <div>
+         <h3 class="modal-title">Sorry we have no more deliveries!</h3>
+         <p class="modal-desc">Our Elves have a full schedule for the season but will be back next year bigger and better. Please leave your name and email and we will notify you next year early.</p>
+         <!--p class="modal-desc">Our retail sites will still be open until the 18th December to come pickup a tree, and you can also purchase tree collection if required.</p-->
+      </div>
+      {%- form 'customer', id: 'ContactForm', class: 'notify' -%}
+       <input type="hidden" name="contact[tags]" value="newsletter">
+      {%- if form.posted_successfully? -%}
+	 <script>
+	    jQuery(document).ready(function(){
+         
+            jQuery('.cs-modal-open').show(); 
+        });
+     </script>
+      <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</h2>
+      {%- elsif form.errors -%}
+	  <script>
+	    jQuery(document).ready(function(){
+            jQuery('.cs-modal-open').show(); 
+        });
+      </script>
+      <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{{ 'templates.contact.form.error_heading' | t }}</h2>
+      {%- endif -%}
+      
+         <input required type="text" placeholder="Enter your name" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"/>
+         <input style="text-transform: lowercase;" required type="email" placeholder="Enter Your Email" id="ContactForm-email" name="contact[email]"spellcheck="false" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="ContactForm-email-error"
+            {% endif %} />
+        <button type="submit" class="sb-btn button--full-width button--secondary">Submit Now</button>
+        <button class="n_thk btn-close" type="button">No Thanks</button>
+      {%- endform -%}
+   </div>
+</div>
+
+
+<script>
+    function readCookie(name) {
+			   var nameEQ = name + "=";
+			   var ca = document.cookie.split(';');
+			   for(var i=0;i < ca.length;i++) {
+			   var c = ca[i];
+			   while (c.charAt(0)==' ') c = c.substring(1,c.length);
+			   if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			   }
+			   return null;
+    }
+    jQuery(document).ready(function(){
+      var PopupCookie = readCookie('PopupCookie');
+      //alert(PopupCookie);
+      if(PopupCookie == 'Yes'){
+
+      } else {
+      
+      jQuery('.cs-modal-open').addClass('open-new-popup');
+        
+      }
+
+      
+     // jQuery('.header__icon.header__icon--cart.link.focus-inset').attr('href','javascript:void(0)');
+      //jQuery('.header__icon.header__icon--cart.link.focus-inset').addClass('Custom-Sold-Popup-Open');
+      jQuery('a[href*="products"]').each(function(){
+        var value = jQuery(this).text().trim();
+        if(value == 'Pick your tree' || value == 'Pick your tree') {
+        } else {
+        jQuery(this).attr('href','javascript:void(0)');
+        jQuery(this).addClass('Custom-Sold-Popup-Open');
+        }
+        
+     
+      });
+      jQuery('a').each(function(){
+       var value = jQuery(this).text().trim();
+        
+      if(value == 'Collect My Tree' || value == 'Collect My Tree') {
+        //alert(value);
+       
+         
+        jQuery(this).attr('href','https://realchristmastreeelves.com.au/products/tree-collection-recycling');
+        jQuery(this).removeClass('Custom-Sold-Popup-Open');
+      
+        
+      }
+      });
+      
+      jQuery('.Custom-Sold-Popup-Open').click(function(){
+         jQuery('.cs-modal-open').show();            
+      });
+      jQuery('.custom-btn-close, .modal-overlay123').click(function(){
+        
+         jQuery('.cs-modal-open').hide();
+         var PopupCookie = 'Yes';
+         document.cookie = "PopupCookie="+PopupCookie+"; path=/";
+      });
+
+    });
+
+    jQuery('a').each(function(){
+       var value = jQuery(this).text().trim();
+        
+      if(value == 'Collect My Tree' || value == 'Collect My Tree') {
+        //alert(value);
+        setInterval(function () {
+       
+        jQuery(this).attr('href','https://realchristmastreeelves.com.au/products/tree-collection-recycling');
+        jQuery(this).removeClass('Custom-Sold-Popup-Open');
+         },1000);
+        
+      }
+      });                       
+  
+</script>

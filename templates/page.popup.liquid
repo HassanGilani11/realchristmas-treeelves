@@ -1,0 +1,178 @@
+<style>
+.modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 15px;
+	width: 550px;
+	padding: 45px 25px;
+	position: absolute;
+	z-index: 2;
+	top: 25%;
+	background-color: #fff;
+	border: 1px solid #000;
+	border-radius: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.modal .flex {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	position: absolute;
+	top: -20px;
+	right: -20px;
+}
+
+.btn-close {
+	padding: 5px;
+	background: #43786e;
+	border-radius: 50%;
+	width: 40px;
+	display: flex;
+	align-items: center;
+	height: 40px;
+	color: #fff;
+	font-size: 17px;
+	justify-content: center;
+	line-height: 1.3;
+	border: none;
+}
+
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: rgb(0 0 0 / 60%);
+	z-index: 11;
+}
+
+.hidden {
+	display: none;
+}
+
+.modal-title {
+	font-weight: 400;
+	font-size: 40px;
+	line-height: 1.33;
+	letter-spacing: .01em;
+	text-transform: capitalize;
+	color: #000;
+	text-align: center;
+}
+
+.modal .modal-desc {
+	font-size: 16px;
+	color: #000;
+	line-height: 1.58;
+	text-align: left;
+	transition: all .3s;
+	text-decoration: none;
+	font-family: Inter, sans-serif !important;
+	margin: 15px 0 5px;
+}
+
+.modal input {
+	height: 50px;
+	border: 1px solid rgba(0, 0, 0, .25);
+	border-radius: 50px;
+	padding: 0 15px;
+	color: #000;
+	line-height: 1.58;
+	font-weight: 400;
+	opacity: 1;
+	text-transform: capitalize;
+	display: block;
+	width: 100%;
+	margin-bottom: 20px;
+	font-size: 16px;
+}
+
+.sb-btn.button--full-width {
+	padding: 15px 25px;
+	line-height: 1.2;
+	height: 50px;
+	font-weight: 400;
+	text-decoration: none;
+	transform: none;
+	font-size: 16px;
+	background: #43786e;
+	opacity: 1;
+	border: 1px solid #43786e;
+	outline: none;
+	box-shadow: none;
+	color: #fff;
+	text-transform: capitalize;
+	transition: all .3s;
+	cursor: pointer;
+	border-radius: 50px;
+	justify-content: center;
+}
+
+.sb-btn.button--full-width:hover {
+	background-color: #fff;
+	color: #43786e;
+}
+
+
+@media screen and (max-width: 1199px) {
+	.modal-title {
+		font-size: 32px;
+	}
+
+	.modal .modal-desc,
+	.modal input,
+	.sb-btn.button--full-width {
+		font-size: 15px;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.modal-title {
+		font-size: 24px;
+	}
+
+	.modal .modal-desc,
+	.modal input,
+	.sb-btn.button--full-width {
+		font-size: 14px;
+	}
+
+	.modal {
+		width: 95%;
+        padding:40px 20px;
+	}
+
+	.btn-close {
+		font-size: 16px;
+	}
+
+	.modal .flex {
+		top: -20px;
+		right: -15px;
+	}
+}  
+    
+</style>
+
+<div class="modal-overlay">
+   <div class="modal">
+      <div class="flex">
+         <button class="btn-close">⨉</button>
+      </div>
+      <div>
+         <h3 class="modal-title">We're Sold Out</h3>
+         <p class="modal-desc">Please enter your Name and Email and we will notify you when the tree will be in stock. </p>
+      </div>
+      <form class="notify">
+         <input type="text" placeholder="Enter your name" id="usr_name" name="usr_name"/>
+         <input type="email" placeholder="Enter Your Email" id="usr_email" name="usr_email" />
+         <button type="submit" name="submit" class="sb-btn button--full-width button--secondary">Add to cart</button>
+      </form>
+   </div>
+</div>
